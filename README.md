@@ -184,8 +184,3 @@ aws s3api delete-bucket --bucket ew-hello-bucket
 3. **Baixar um Arquivo**: Recuperamos o arquivo do bucket para o sistema local.
 4. **Remover Arquivos**: Limpamos o bucket ao deletar seus conteúdos.
 5. **Excluir o Bucket**: Eliminamos o bucket após esvaziá-lo.
-
-```
-
-Você pode copiar e colar esse conteúdo em um arquivo markdown (`.md`) para visualização ou uso posterior.
-```
