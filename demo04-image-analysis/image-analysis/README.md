@@ -1,92 +1,107 @@
-<!--
-title: 'AWS Simple HTTP Endpoint example in NodeJS'
-description: 'This template demonstrates how to make a simple HTTP API with Node.js running on AWS Lambda and API Gateway using the Serverless Framework.'
-layout: Doc
-framework: v3
-platform: AWS
-language: nodeJS
-authorLink: 'https://github.com/serverless'
-authorName: 'Serverless, inc.'
-authorAvatar: 'https://avatars1.githubusercontent.com/u/13742415?s=200&v=4'
--->
+# AWS Rekognition Image Analysis
 
-# Serverless Framework Node HTTP API on AWS
+Este projeto é uma aplicação serverless que utiliza AWS Rekognition para análise de imagens, retornando descrições detalhadas dos elementos identificados na imagem em português. A aplicação é construída usando o framework Serverless e Node.js.
 
-This template demonstrates how to make a simple HTTP API with Node.js running on AWS Lambda and API Gateway using the Serverless Framework.
+## 🚀 Funcionalidades
 
-This template does not include any kind of persistence (database). For more advanced examples, check out the [serverless/examples repository](https://github.com/serverless/examples/) which includes Typescript, Mongo, DynamoDB and other examples.
+- Análise de imagens usando AWS Rekognition
+- Tradução automática das descrições de inglês para português usando AWS Translate
+- Filtro de resultados com confiança superior a 80%
+- Retorno formatado das descrições com percentual de confiança
 
-## Usage
+## 🛠️ Tecnologias Utilizadas
 
-### Deployment
+- Node.js
+- Serverless Framework
+- AWS Lambda
+- AWS Rekognition
+- AWS Translate
+- Jest para testes
 
-```
-$ serverless deploy
-```
+## 📋 Pré-requisitos
 
-After deploying, you should see output similar to:
+- Node.js instalado
+- Conta AWS configurada
+- Serverless Framework instalado globalmente
+- Configuração das credenciais AWS
 
-```bash
-Deploying aws-node-http-api-project to stage dev (us-east-1)
+## 🔧 Instalação
 
-✔ Service deployed to stack aws-node-http-api-project-dev (152s)
-
-endpoint: GET - https://xxxxxxxxxx.execute-api.us-east-1.amazonaws.com/
-functions:
-  hello: aws-node-http-api-project-dev-hello (1.9 kB)
-```
-
-_Note_: In current form, after deployment, your API is public and can be invoked by anyone. For production deployments, you might want to configure an authorizer. For details on how to do that, refer to [http event docs](https://www.serverless.com/framework/docs/providers/aws/events/apigateway/).
-
-### Invocation
-
-After successful deployment, you can call the created application via HTTP:
+1. Clone o repositório:
 
 ```bash
-curl https://xxxxxxx.execute-api.us-east-1.amazonaws.com/
+git clone [seu-repositorio]
+cd image-analysis
 ```
 
-Which should result in response similar to the following (removed `input` content for brevity):
+2. Instale as dependências:
+
+```bash
+npm install
+```
+
+## ⚙️ Estrutura do Projeto
+
+```
+.
+├── handler.js          # Classe principal com a lógica de negócios
+├── factory.js          # Factory para instanciação dos serviços AWS
+├── index.js           # Ponto de entrada da aplicação
+└── package.json       # Dependências e scripts do projeto
+```
+
+## 🏃 Scripts Disponíveis
+
+- `npm run invoke`: Invoca a função Lambda no ambiente AWS
+- `npm run invoke:local`: Invoca a função Lambda localmente
+- `npm test`: Executa os testes unitários
+- `npm run test:watch`: Executa os testes em modo watch
+
+## 📦 Dependências Principais
+
+- aws-sdk: v2.1128
+- axios: ^0.17.1
+- serverless: 3.16
+- jest: ^28.1.3
+
+## 🔍 Como Usar
+
+A API espera receber uma URL de imagem como query parameter. Exemplo de requisição:
+
+```
+GET /analyze?imageUrl=https://exemplo.com/imagem.jpg
+```
+
+### Resposta de Exemplo
 
 ```json
 {
-  "message": "Go Serverless v2.0! Your function executed successfully!",
-  "input": {
-    ...
-  }
-}
-```
-
-### Local development
-
-You can invoke your function locally by using the following command:
-
-```bash
-serverless invoke local --function hello
-```
-
-Which should result in response similar to the following:
-
-```
-{
   "statusCode": 200,
-  "body": "{\n  \"message\": \"Go Serverless v3.0! Your function executed successfully!\",\n  \"input\": \"\"\n}"
+  "body": "A imagem tem\n95.23% de ser do tipo cachorro\n90.15% de ser do tipo animal de estimação"
 }
 ```
 
+## ✅ Testes
 
-Alternatively, it is also possible to emulate API Gateway and Lambda locally by using `serverless-offline` plugin. In order to do that, execute the following command:
+O projeto enfatiza a importância de testes, utilizando Jest como framework de teste. Os testes cobrem:
+
+- Integração com AWS Rekognition
+- Integração com AWS Translate
+- Formatação de resultados
+- Tratamento de erros
+- Validação de parâmetros
+
+Para executar os testes:
 
 ```bash
-serverless plugin install -n serverless-offline
+npm test
 ```
 
-It will add the `serverless-offline` plugin to `devDependencies` in `package.json` file as well as will add it to `plugins` in `serverless.yml`.
+## 🤝 Contribuindo
 
-After installation, you can start local emulation with:
+Contribuições são sempre bem-vindas! Por favor, leia as diretrizes de contribuição antes de submeter pull requests.
 
-```
-serverless offline
-```
+## 📄 Licença
 
-To learn more about the capabilities of `serverless-offline`, please refer to its [GitHub repository](https://github.com/dherault/serverless-offline).
+Este projeto está sob a licença ISC.
+s
