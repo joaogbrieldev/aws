@@ -12,7 +12,7 @@ aws s3api create-bucket --bucket ew-hello-bucket
 ```
 ````
 
-- **Descrição**: Este comando cria um novo bucket no Amazon S3 chamado `ew-hello-bucket`.
+- **Descrição**: Este comando cria um novo bucket no Amazon S3 chamado `jg-hello-bucket`.
 - **Detalhes**:
   - `aws s3api`: Usa a interface de baixo nível da AWS para gerenciar buckets.
   - `create-bucket`: Especifica a ação de criar um bucket.
