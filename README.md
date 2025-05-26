@@ -3,7 +3,7 @@
 ````markdown
 # Explicação dos Comandos AWS S3
 
-## 1. **Criar um Bucket**
+## 1. **Criar Bucket**
 
 ### Comando:
 
